@@ -1,0 +1,11 @@
+# vscode settings
+.vscode
+
+# compilation
+dist
+
+# NodeJS
+node_modules
+
+# env variables
+.env

@@ -1,0 +1,35 @@
+volumes:
+  node_modules_node:
+
+services:
+  node:
+    build:
+      context: ./back-end
+      dockerfile: Dockerfile
+    container_name: node
+    environment:
+      - PORT=8080
+    ports:
+      - 8080:8080
+    volumes:
+      - ./back-end:/app
+      - node_modules_node:/app/node_modules
+    
+  mongo:
+    image: mongo
+    container_name: mongo
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: local
+
+  mongo-express:
+    image: mongo-express
+    container_name: mongo-express
+    restart: always
+    ports:
+      - 8081:8081
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: root
+      ME_CONFIG_MONGODB_ADMINPASSWORD: local
+      ME_CONFIG_MONGODB_URL: mongodb://root:local@mongo:27017/
