@@ -1,10 +1,19 @@
+volumes:
+  node_modules_node:
+
 services:
   node:
     build:
       context: ./back-end
       dockerfile: Dockerfile
-      # target: dev
     container_name: node
+    environment:
+      - PORT=8080
+    ports:
+      - 8080:8080
+    volumes:
+      - ./back-end:/app
+      - node_modules_node:/app/node_modules
     
   mongo:
     image: mongo
