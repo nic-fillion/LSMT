@@ -1,5 +1,6 @@
 volumes:
   node_modules_node:
+  node_modules_react:
 
 services:
   node:
@@ -24,6 +25,7 @@ services:
       - 3000:3000
     volumes:
       - ./front-end/:/app
+      - node_modules_react:/app/node_modules
     
   mongo:
     image: mongo
