@@ -1,5 +1,6 @@
 volumes:
   node_modules_node:
+  node_modules_react:
 
 services:
   node:
@@ -14,6 +15,17 @@ services:
     volumes:
       - ./back-end:/app
       - node_modules_node:/app/node_modules
+
+  react:
+    build:
+      context: ./front-end
+      dockerfile: Dockerfile
+    container_name: react
+    ports:
+      - 3000:3000
+    volumes:
+      - ./front-end/:/app
+      - node_modules_react:/app/node_modules
     
   mongo:
     image: mongo
