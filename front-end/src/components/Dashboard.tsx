@@ -13,7 +13,7 @@ export default function Dashboard(): JSX.Element {
     <Box
       component="main"
       sx={{
-        backgroundColor: (theme) =>
+        backgroundColor: theme =>
           theme.palette.mode === 'light'
             ? theme.palette.grey[100]
             : theme.palette.grey[900],
